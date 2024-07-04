@@ -1,0 +1,14 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="text-center display-4">Tasks</h1>
+    <div style="height: 400px;">
+        <div class="container pt-3 bg-dark rounded h-100 w-50 overflow-auto">
+            {% for task in tasks %}
+            <a href="{{ url_for('task.edit', id=task['id']) }}" class="text-white">{{ task['title'] }}</a>
+            <hr>
+            {% endfor %}
+        </div> 
+    </div>
+    <hr>
+{% endblock %}

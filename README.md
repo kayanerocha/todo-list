@@ -30,6 +30,7 @@ Aplicação para criar e gerenciar tarefas simples.
 - Uso do Jinja na criação das páginas
 - Uso do Bootstrap para estilizar as páginas
 - Configuração do banco de dados SQLite
+- Filtrar itens de uma lista com JavaScript
 
 
 
@@ -100,7 +101,7 @@ Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de
 
 ## Stack Utilizada
 
-**Front-end:** HTML, CSS, Bootstrap e Jinja
+**Front-end:** HTML, CSS, JavaScript, Bootstrap e Jinja
 
 **Back-end:** Python, Flask e SQLite
 

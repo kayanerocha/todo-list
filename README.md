@@ -12,9 +12,9 @@ Aplicação para criar e gerenciar tarefas simples.
 - Visualizar detalhes de tarefas
 - Editar tarefa
 - Deletar tarefa
+- Pesquisar tarefa
 
 ### Backlog
-- Pesquisar tarefa
 - Cadastrar usuário
 - Visualizar perfil
 - Editar perfil

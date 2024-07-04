@@ -27,12 +27,12 @@ def index():
     conn = get_connection()
     tasks = conn.execute('SELECT * FROM tasks;').fetchall()
     conn.close()
-    return render_template('index.html', tasks=tasks)
+    return render_template('task/index.html', tasks=tasks)
 
 @task_blueprint.route('/<int:id>')
 def task(id: int):
     task = get_task(id)
-    return render_template('task.html', task=task)
+    return render_template('task/task.html', task=task)
 
 @task_blueprint.route('/create', methods=['GET', 'POST'])
 def create():
@@ -55,7 +55,7 @@ def create():
             conn.commit()
             conn.close()
             return redirect(url_for('task.index'))
-    return render_template('create.html')
+    return render_template('task/create.html')
 
 
 @task_blueprint.route('/<int:id>/edit', methods=['GET', 'POST'])
@@ -83,7 +83,7 @@ def edit(id: int):
             conn.close()
             return redirect(url_for('task.index'))
     
-    return render_template('edit.html', task=task)
+    return render_template('task/edit.html', task=task)
 
 @task_blueprint.route('/<int:id>/delete', methods=['POST'])
 def delete(id: int):

@@ -1,13 +1,9 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
-import sqlite3
 from datetime import datetime
 
-task_blueprint = Blueprint('task', __name__)
+from database.database import get_connection
 
-def get_connection():
-    conn = sqlite3.connect('database.db')
-    conn.row_factory = sqlite3.Row
-    return conn
+task_blueprint = Blueprint('task', __name__)
 
 def get_task(id: int):
     conn = get_connection()

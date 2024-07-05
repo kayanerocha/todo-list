@@ -13,9 +13,9 @@ Aplicação para criar e gerenciar tarefas simples.
 - Editar tarefa
 - Deletar tarefa
 - Pesquisar tarefa
+- Cadastrar usuário
 
 ### Backlog
-- Cadastrar usuário
 - Visualizar perfil
 - Editar perfil
 - Excluir perfil
@@ -24,7 +24,7 @@ Aplicação para criar e gerenciar tarefas simples.
 
 
 
-## Aprendizados
+## Aprendizados Aplicados
 
 - Configuração de variáveis de ambiente do Flask
 - Uso do Jinja na criação das páginas

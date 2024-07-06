@@ -1,7 +1,9 @@
 from flask import Blueprint, render_template, request, url_for, flash, redirect
 from werkzeug.security import generate_password_hash
+# from flask_login import LoginManager
 
 from database.database import get_connection
+import blueprints
 
 user_blueprint = Blueprint('user', __name__)
 
@@ -42,4 +44,6 @@ def register():
 
 @user_blueprint.route('/login', methods=['GET', 'POST'])
 def login():
+    # if request.method == 'POST':
+
     return render_template('user/login.html')

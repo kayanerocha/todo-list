@@ -14,13 +14,13 @@ Aplicação para criar e gerenciar tarefas simples.
 - Deletar tarefa
 - Pesquisar tarefa
 - Cadastrar usuário
+- Login
+- Logout
 
 ### Backlog
 - Visualizar perfil
 - Editar perfil
 - Excluir perfil
-- Login
-- Logout
 
 
 
@@ -31,6 +31,8 @@ Aplicação para criar e gerenciar tarefas simples.
 - Uso do Bootstrap para estilizar as páginas
 - Configuração do banco de dados SQLite
 - Filtrar itens de uma lista com JavaScript
+- Uso da biblioteca Flask-SQLAlchemy para criar modelos, se conectar ao banco de dado e manipular os objetos
+- Uso da biblioteca Flask-Login para fazer login, logout e verificar se o usuário está logado
 
 
 

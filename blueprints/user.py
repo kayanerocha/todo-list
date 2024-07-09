@@ -1,30 +1,11 @@
 from flask import Blueprint, render_template, request, url_for, flash, redirect
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import login_user
+from flask_login import login_user, login_required, logout_user
 
-from database.database import get_connection
-import blueprints
+from database.database import db
+from models.user import User
 
 user_blueprint = Blueprint('user', __name__)
-
-# def user_exist(email):
-#     conn = get_connection()
-#     user = conn.execute('SELECT * FROM users where email = ?', (email,)).fetchone()
-#     conn.close()
-
-#     if user:
-#         return user
-#     return False
-
-def get_user(id=None, email=None):
-    conn = get_connection()
-    if id:
-        user = conn.execute('SELECT * FROM users where id = ?', (id,)).fetchone()
-    else:
-        user = conn.execute('SELECT * FROM users where email = ?', (email,)).fetchone()
-    conn.close()
-
-    return user
 
 @user_blueprint.route('/register', methods=['GET', 'POST'])
 def register():
@@ -34,19 +15,20 @@ def register():
         password = request.form['password']
         confirm_password = request.form['confirm_password']
 
+        user = User.query.filter_by(email=email).first()
+
         if len(password) <= 5:
             flash('The password must be at least 6 characters long!')
         elif password != confirm_password:
             flash('Passwords must be the same!')
-        elif get_user(email=email):
+        elif user:
             flash('User already exists!')
         else:
             hash_password = generate_password_hash(password)
 
-            conn = get_connection()
-            conn.execute('INSERT INTO users (name, email, password) VALUES (?, ?, ?)', (name, email, hash_password))
-            conn.commit()
-            conn.close()
+            new_user = User(name=name, email=email, password=hash_password)
+            db.session.add(new_user)
+            db.session.commit()
 
             flash('Registration completed successfully!')
             return redirect(url_for('user.login'))
@@ -59,11 +41,17 @@ def login():
         password = request.form['password']
         remember = True if request.form.get('remember') else False
 
-        user = get_user(email=email)
+        user = User.query.filter_by(email=email).first()
 
-        if user and check_password_hash(user['password'], password):
+        if user and check_password_hash(user.password, password):
             login_user(user=user, remember=remember)
             return redirect(url_for('task.index'))
         flash('Please check your login details and try again.')
 
     return render_template('user/login.html')
+
+@user_blueprint.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('user.login'))

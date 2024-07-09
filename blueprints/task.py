@@ -1,7 +1,9 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
 from datetime import datetime
+from flask_login import login_required, current_user
 
-from database.database import get_connection
+from database.database import get_connection, db
+from models.task import Task
 
 task_blueprint = Blueprint('task', __name__)
 
@@ -18,11 +20,15 @@ def valid_dates(start_date, end_date):
         return 'End date cannot be before the start date!'
     return True
 
+def convert_date(date):
+    if date:
+        return datetime.strptime(date, '%Y-%m-%d').date()
+    return None
+
 @task_blueprint.route('/')
+@login_required
 def index():
-    conn = get_connection()
-    tasks = conn.execute('SELECT * FROM tasks;').fetchall()
-    conn.close()
+    tasks = Task.query.all()
     return render_template('task/index.html', tasks=tasks)
 
 @task_blueprint.route('/<int:id>')
@@ -35,21 +41,20 @@ def create():
     if request.method == 'POST':
         title = request.form['title']
         description = request.form['description']
-        start_date = request.form['start_date']
-        end_date = request.form['end_date']
-        concluded = 1 if request.form.getlist('concluded') else 0
+        start_date = convert_date(request.form['start_date'])
+        end_date = convert_date(request.form['end_date'])
+        concluded = True if request.form.getlist('concluded') else False
         
         valid_date = valid_dates(start_date, end_date)
         if not title:
             flash('Title is required!')
         elif valid_date is not True:
-            flash(valid_date)      
+            flash(valid_date)    
         else:
-            conn = get_connection()
-            conn.execute('''INSERT INTO tasks (title, description, start_date, end_date, concluded)
-                         VALUES (?, ?, ?, ?, ?);''', (title, description, start_date, end_date, concluded))
-            conn.commit()
-            conn.close()
+            task = Task(title=title, description=description, start_date=start_date, end_date=end_date, concluded=concluded)
+            db.session.add(task)
+            db.session.commit()
+
             return redirect(url_for('task.index'))
     return render_template('task/create.html')
 

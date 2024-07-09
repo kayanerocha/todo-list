@@ -1,8 +1,10 @@
-from app import db
-from sqlalchemy import TIMESTAMP, Column, String, Integer, Float, Double, Date, DateTime, Pri
+from sqlalchemy import TIMESTAMP
+from flask_login import UserMixin
 import datetime
 
-class User(db.Model):
+from database.database import db
+
+class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(100), nullable=False, unique=True)

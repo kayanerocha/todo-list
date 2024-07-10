@@ -11,4 +11,5 @@ class Task(db.Model):
     end_date = db.Column(db.Date)
     concluded = db.Column(db.Boolean)
     created = db.Column(TIMESTAMP, default=datetime.datetime.now())
+    user_id = db.Column(db.Integer, db.ForeignKey('user.id'))
         

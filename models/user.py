@@ -10,4 +10,4 @@ class User(UserMixin, db.Model):
     email = db.Column(db.String(100), nullable=False, unique=True)
     password = db.Column(db.String(100), nullable=False)
     created = db.Column(TIMESTAMP, default=datetime.datetime.now())
-
+    tasks = db.relationship('Task', backref='user')

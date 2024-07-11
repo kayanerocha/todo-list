@@ -55,6 +55,9 @@ def create():
 def edit(id: int):
     task = Task.query.filter_by(id=id).first()
 
+    if task.id != current_user.id:
+        return redirect(url_for('task.index'))
+
     if request.method == 'POST':
         title = request.form['title']
         description = request.form['description']

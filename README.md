@@ -41,7 +41,7 @@ Aplicação para criar e gerenciar tarefas simples.
 Clone o projeto
 
 ```bash
-  git clone https://link-para-o-projeto
+  git clone https://github.com/kayanerocha/todo-list.git
 ```
 
 Entre no diretório do projeto
@@ -84,7 +84,7 @@ Renomei o arquivo .env.exemple para .env e adicione uma SECRET_KEY
 Inicie o banco de dados
 
 ```bash
-  python init_db.py
+  python database\init_db.py
 ```
 
 Rode a aplicação

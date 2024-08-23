@@ -55,7 +55,7 @@ def create():
 def edit(id: int):
     task = Task.query.filter_by(id=id).first()
 
-    if task.id != current_user.id:
+    if not task or task.id != current_user.id:
         return redirect(url_for('task.index'))
 
     if request.method == 'POST':
@@ -82,6 +82,10 @@ def edit(id: int):
 @login_required
 def delete(id: int):
     task = Task.query.filter_by(id=id).first()
+    
+    if not task or task.id != current_user.id:
+        return redirect(url_for('task.index'))
+    
     db.session.delete(task)
     db.session.commit()
 

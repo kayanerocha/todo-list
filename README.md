@@ -84,7 +84,7 @@ Renomei o arquivo .env.exemple para .env e adicione uma SECRET_KEY
 Inicie o banco de dados
 
 ```bash
-  python database\init_db.py
+  python database\database.py
 ```
 
 Rode a aplicação

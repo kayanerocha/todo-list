@@ -4,6 +4,11 @@
 Aplicação para criar e gerenciar tarefas simples.
 
 
+## Demonstração
+
+A aplicação pode ser utilizada acessando o link todo-list-mu-two-46.vercel.app
+
+
 ## Funcionalidades
 
 ### Done
@@ -107,3 +112,12 @@ Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de
 
 **Back-end:** Python, Flask e SQLite
 
+
+## Deploy
+
+Para fazer o deploy desse projetoé necessário ter o node instalado e conta no Vercel, tendo isto rode
+
+```bash
+  npm i -g vercel
+  vercel deploy
+```

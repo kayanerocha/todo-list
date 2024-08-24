@@ -6,7 +6,7 @@ Aplicação para criar e gerenciar tarefas simples.
 
 ## Demonstração
 
-A aplicação pode ser utilizada acessando o link todo-list-mu-two-46.vercel.app
+A aplicação pode ser utilizada acessando o link https://todo-list-mu-two-46.vercel.app/
 
 
 ## Funcionalidades

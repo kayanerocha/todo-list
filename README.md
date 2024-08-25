@@ -21,12 +21,12 @@ A aplicação pode ser utilizada acessando o link https://todo-list-mu-two-46.ve
 - Cadastrar usuário
 - Login
 - Logout
-
-### Backlog
 - Visualizar perfil
 - Editar perfil
 - Excluir perfil
 
+Backlog
+- Alterar Senha
 
 
 ## Aprendizados Aplicados

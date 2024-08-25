@@ -1,6 +1,7 @@
 from flask import Blueprint, render_template, request, url_for, flash, redirect
 from werkzeug.security import generate_password_hash, check_password_hash
-from flask_login import login_user, login_required, logout_user
+from flask_login import login_user, login_required, logout_user, current_user
+from sqlalchemy import update
 
 from database.database import db
 from models.user import User
@@ -54,4 +55,26 @@ def login():
 @login_required
 def logout():
     logout_user()
+    return redirect(url_for('user.login'))
+
+@user_blueprint.route('/profile', methods=['GET', 'POST'])
+@login_required
+def profile():
+    if request.method == 'POST':
+        name = request.form['name']
+        email = request.form['email']
+
+        db.session.execute(update(User).where(User.id == current_user.id).values(name=name,email=email))
+        db.session.commit()
+
+        return redirect(url_for('task.index'))
+
+    return render_template('user/profile.html', user=current_user)
+
+@user_blueprint.route('/delete', methods=['POST'])
+@login_required
+def delete():
+    db.session.delete(current_user)
+    db.session.commit()
+
     return redirect(url_for('user.login'))

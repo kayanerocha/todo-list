@@ -20,7 +20,7 @@ def convert_date(date):
         return datetime.strptime(date, '%Y-%m-%d').date()
     return None
 
-@task_blueprint.route('/')
+@task_blueprint.route('/tasks')
 @login_required
 def index():
     tasks = Task.query.filter_by(user_id=current_user.id).all()

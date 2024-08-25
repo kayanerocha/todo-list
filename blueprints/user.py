@@ -34,7 +34,7 @@ def register():
             return redirect(url_for('user.login'))
     return render_template('user/register.html')
 
-@user_blueprint.route('/login', methods=['GET', 'POST'])
+@user_blueprint.route('/', methods=['GET', 'POST'])
 def login():
     if request.method == 'POST':
         email = request.form['email']

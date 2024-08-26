@@ -4,11 +4,6 @@
 Aplicação para criar e gerenciar tarefas simples.
 
 
-## Demonstração
-
-A aplicação pode ser utilizada acessando o link https://todo-list-mu-two-46.vercel.app/
-
-
 ## Funcionalidades
 
 ### Done
@@ -38,7 +33,6 @@ Backlog
 - Filtrar itens de uma lista com JavaScript
 - Uso da biblioteca Flask-SQLAlchemy para criar modelos, se conectar ao banco de dado e manipular os objetos
 - Uso da biblioteca Flask-Login para fazer login, logout e verificar se o usuário está logado
-- Deploy no Vercel
 
 
 ## Rodando Localmente
@@ -112,12 +106,3 @@ Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de
 
 **Back-end:** Python, Flask e SQLite
 
-
-## Deploy
-
-Para fazer o deploy desse projetoé necessário ter o node instalado e conta no Vercel, tendo isto rode
-
-```bash
-  npm i -g vercel
-  vercel deploy
-```

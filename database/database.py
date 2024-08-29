@@ -1,9 +1,6 @@
-import sqlite3
+from decouple import config
 from flask_sqlalchemy import SQLAlchemy
 
 db = SQLAlchemy()
 
-def get_connection():
-    conn = sqlite3.connect('database.db')
-    conn.row_factory = sqlite3.Row
-    return conn
+conn = f'mysql+pymysql://{config("MYSQL_USER")}:{config("MYSQL_PASSWORD")}@{config("MYSQL_HOST")}/{config("MYSQL_DATABASE")}'

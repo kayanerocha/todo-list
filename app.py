@@ -1,22 +1,24 @@
 from flask import Flask
 from decouple import config
-from flask_sqlalchemy import SQLAlchemy
 from flask_login import LoginManager
+from flask_migrate import Migrate
 from sys import argv
 
-from database.database import db
+from database.database import *
 from blueprints.task import task_blueprint
 from blueprints.user import user_blueprint
 from models.user import User
+from models.task import Task
 
 app = Flask(__name__)
 
 login_manager = LoginManager()
 
 app.config['SECRET_KEY'] = config('SECRET_KEY')
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///db.sqlite'
+app.config['SQLALCHEMY_DATABASE_URI'] = conn
 
 db.init_app(app)
+migrate = Migrate(app, db)
 login_manager.login_view = 'user.login'
 login_manager.init_app(app)
 

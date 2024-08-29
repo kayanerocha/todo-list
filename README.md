@@ -33,7 +33,7 @@ Backlog
 - Filtrar itens de uma lista com JavaScript
 - Uso do ORM Flask-SQLAlchemy para criar modelos, se conectar ao banco de dado e manipular os objetos
 - Uso da biblioteca Flask-Login para fazer login, logout e verificar se o usuário está logado
-- Uso ba biblioteca flask_migrate para criação e versionamento do banco de dados
+- Uso ba biblioteca Flask-Migrate para criação e versionamento do banco de dados
 
 
 ## Rodando Localmente
@@ -120,5 +120,5 @@ Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de
 
 **Front-end:** HTML, CSS, JavaScript, Bootstrap e Jinja
 
-**Back-end:** Python, Flask e SQLite
+**Back-end:** Python, Flask e MySQL
 

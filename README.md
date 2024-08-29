@@ -31,8 +31,9 @@ Backlog
 - Uso do Bootstrap para estilizar as páginas
 - Configuração do banco de dados SQLite
 - Filtrar itens de uma lista com JavaScript
-- Uso da biblioteca Flask-SQLAlchemy para criar modelos, se conectar ao banco de dado e manipular os objetos
+- Uso do ORM Flask-SQLAlchemy para criar modelos, se conectar ao banco de dado e manipular os objetos
 - Uso da biblioteca Flask-Login para fazer login, logout e verificar se o usuário está logado
+- Uso ba biblioteca flask_migrate para criação e versionamento do banco de dados
 
 
 ## Rodando Localmente
@@ -74,16 +75,27 @@ Configure as variávies de ambiente
   set FLASK_ENV=development
 ```
 
-Renomei o arquivo .env.exemple para .env e adicione uma SECRET_KEY
+Renomei o arquivo .env.exemple para .env e adicione valores as variáveis de ambiente
 
 ```bash
   SECRET_KEY=
+  MYSQL_HOST=
+  MYSQL_USER=
+  MYSQL_PASSWORD=
+  MYSQL_PORT=
 ```
 
-Inicie o banco de dados
+Inicie o banco de dados (Importante ter um banco de dados MySQL local chamado task)
 
 ```bash
-  python database\database.py
+  flask db init
+```
+
+Execute as migrations
+
+```
+flask db migrate
+flask db upgrade
 ```
 
 Rode a aplicação
@@ -98,6 +110,10 @@ Rode a aplicação
 Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de ambiente no seu .env
 
 `SECRET_KEY`
+`MYSQL_HOST`
+`MYSQL_USER`
+`MYSQL_PASSWORD`
+`MYSQL_PORT`
 
 
 ## Stack Utilizada

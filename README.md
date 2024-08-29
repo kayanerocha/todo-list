@@ -120,5 +120,5 @@ Para rodar esse projeto, você vai precisar adicionar as seguintes variáveis de
 
 **Front-end:** HTML, CSS, JavaScript, Bootstrap e Jinja
 
-**Back-end:** Python, Flask e SQLite
+**Back-end:** Python, Flask e MySQL
 
